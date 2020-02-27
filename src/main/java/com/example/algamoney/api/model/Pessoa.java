@@ -3,11 +3,12 @@ package com.example.algamoney.api.model;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Pessoa {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long codigo;
 
 	@NotNull

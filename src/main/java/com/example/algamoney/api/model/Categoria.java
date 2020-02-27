@@ -2,18 +2,21 @@ package com.example.algamoney.api.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "categoria")
 public class Categoria {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long codigo;
 	
 	@NotNull
